@@ -1,0 +1,126 @@
+% Infographics
+\documentclass{article}
+\usepackage[margin=0.5cm,paperheight=6cm,paperwidth=9cm]{geometry}
+
+% Packages
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[sfdefault]{FiraSans}
+
+\pagenumbering{gobble} 
+
+% colours
+\definecolor{white}{HTML}{FFFFFF}
+\definecolor{black}{HTML}{000000}
+\definecolor{lightgray}{HTML}{E6E6E6}
+\definecolor{gray}{HTML}{B3B3B3}
+\definecolor{darkgray}{HTML}{808080}
+\definecolor{green}{HTML}{60BA12}
+\definecolor{beige}{HTML}{F7F2C0}
+\definecolor{lightblue}{HTML}{DEF2FC}
+
+% parameters
+\def\target{6}
+
+% array
+\def\array{0/0,1/2,2/3,3/5,4/7,5/8,6/9,7/10}
+
+% styles
+\def\defaultbg{white}
+\def\defaultborder{black}
+\def\defaulttext{black}
+
+\def\discardbg{lightgray}
+\def\discardborder{gray}
+\def\discardtext{darkgray}
+
+\def\currentbg{beige}
+\def\currentborder{\defaultborder}
+\def\currenttext{\defaulttext}
+
+\def\targetbg{green}
+\def\targetborder{\defaultborder}
+\def\targettext{\defaulttext}
+
+\def\boundbg{lightblue}
+\def\boundborder{\defaultborder}
+\def\boundtext{\defaulttext}
+
+% generate picture
+\newcommand{\genpic}[3]{%
+% redefine arguments
+\def\left{#1}
+\def\right{#2}
+\def\current{#3}
+\begin{tikzpicture}[thick]
+  % draw indexes
+  \foreach \x in {0,...,7} \node[above,\defaulttext] (ind\x) at (\x+0.5,1) {\tiny \x};
+
+  % draw array
+  \foreach \x\val in \array {
+    % defaults
+    \def\bg{\defaultbg}
+    \def\bd{\defaultborder}
+    \def\txt{\defaulttext}
+
+    % gray out discarded
+    \ifnum\x<\left
+      \def\bg{\discardbg}
+      \def\bd{\discardborder}
+      \def\txt{\discardtext}
+    \fi
+    \ifnum\x>\right
+      \def\bg{\discardbg}
+      \def\bd{\discardborder}
+      \def\txt{\discardtext}
+    \fi
+
+    % highlight min/max range
+    \ifnum\x=\left
+      \def\bg{\boundbg}
+      \def\bd{\boundborder}
+      \def\txt{\boundtext}
+    \fi
+    \ifnum\x=\right
+      \def\bg{\boundbg}
+      \def\bd{\boundborder}
+      \def\txt{\boundtext}
+    \fi
+
+    % current mid
+    \ifnum\x=\current
+      % if target found
+      \ifnum\x=\target
+        \def\bg{\targetbg}
+        \def\bd{\targetborder}
+        \def\txt{\targettext}
+      \else
+        \def\bg{\currentbg}
+        \def\bd{\currentborder}
+        \def\txt{\currenttext}
+      \fi
+    \fi
+
+    % draw cell
+    \fill[\bg] (\x,0) rectangle (\x+1,1);
+    \draw[\bd] (\x,0) rectangle (\x+1,1);
+    \node[text=\txt] at (\x+0.5,0.5) {\val};
+  }
+
+  % min and max tags
+  \node[below, text=\defaulttext] at (\left+0.5,0) {\scriptsize min};
+  \node[below, text=\defaulttext] at (\right+0.5,0) {\scriptsize max};
+\end{tikzpicture}
+}
+
+\begin{document}
+
+\begin{figure}
+%% \centering
+% Example binary search steps
+\genpic{0}{7}{3}
+\genpic{4}{7}{5}
+\genpic{6}{7}{6}
+\end{figure}
+
+\end{document}

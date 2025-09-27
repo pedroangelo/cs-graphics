@@ -7,3 +7,4 @@ Graphics written in TeX (and others) about computer science topics
 * Data Structures and Algorithms
 
 - [[./data-structures-algorithms/linear-search.pdf][Linear search]]
+- [[./data-structures-algorithms/binary-search.pdf][Binary search]]
