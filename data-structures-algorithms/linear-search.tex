@@ -1,0 +1,140 @@
+%% % Animation
+%% \documentclass[border=5mm]{article}
+%% \usepackage[margin=0.5cm,paperheight=3cm,paperwidth=9cm]{geometry}
+
+% Infographics
+\documentclass{article}
+\usepackage[margin=0.5cm,paperheight=7.5cm,paperwidth=9cm]{geometry}
+
+% Packages
+\usepackage{ifthen}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[sfdefault]{FiraSans}
+
+\pagenumbering{gobble} 
+
+% colours
+\definecolor{white}{HTML}{FFFFFF}
+\definecolor{black}{HTML}{000000}
+\definecolor{lightgray}{HTML}{E6E6E6}
+\definecolor{gray}{HTML}{B3B3B3}
+\definecolor{darkgray}{HTML}{808080}
+\definecolor{green}{HTML}{60BA12}
+\definecolor{beige}{HTML}{F7F2C0}
+
+% parameters
+\def\target{6}
+
+% array
+\def\array{0/5,1/8,2/10,3/2,4/0,5/3,6/9,7/7}
+
+% default style
+\def\defaultbg{white}
+\def\defaultborder{black}
+\def\defaulttext{black}
+
+% visited style
+\def\visitedbg{lightgray}
+\def\visitedborder{gray}
+\def\visitedtext{darkgray}
+\def\visitedarrow{gray}
+
+% current style
+\def\currentbg{beige}
+\def\currentborder{\defaultborder}
+\def\currenttext{\defaulttext}
+\def\currentarrow{\defaulttext}
+
+% target style
+\def\targetbg{green}
+\def\targetborder{\defaultborder}
+\def\targettext{\defaulttext}
+
+% generate picture
+\newcommand{\genpic}[1]{
+\begin{tikzpicture}[thick]
+
+% redefine current value being visited
+\def\current{#1}
+
+% draw array with 8 positions
+%% \draw[black!0] (0,0) grid (8,1); 
+
+% draw indexes above grid
+\foreach \x in {0,...,7} \node[above] (ind\x) at (\x+0.5,1) {\tiny \x};
+
+\draw [->,\visitedarrow] (ind0.north)+(0,5mm) to (ind0.north);
+
+% for each position of the array
+\foreach \x\val in \array {
+  % draw visited
+  \ifnum\x<\current
+    \fill[\visitedbg] (\x,0) rectangle (\x+1,1);
+    \draw[\visitedborder] (\x,0) rectangle (\x+1,1);
+    \node[text=\visitedtext] (val\x) at (\x+0.5,0.5) {\val};
+    % draw arrow
+    \pgfmathtruncatemacro{\nextx}{\x+1}
+    \draw [->,\visitedarrow] (ind\x) to [out=60,in=90] (ind\nextx);
+  \fi
+  % draw default
+  \ifnum\x>\current
+    \fill[\defaultbg] (\x,0) rectangle (\x+1,1);
+    \draw[\defaultborder] (\x,0) rectangle (\x+1,1);
+    \node[text=\defaulttext] (val\x) at (\x+0.5,0.5) {\val};
+  \fi
+}
+
+\foreach \x\val in \array {
+  % draw current
+  \ifnum\x=\current
+    % draw arrow
+    \ifnum\x=0
+      \draw [->,\currentarrow] (ind0.north)+(0,5mm) to (ind0);
+    \fi
+    \ifnum\x>0
+      \pgfmathtruncatemacro{\prex}{\x-1}
+      \draw [->,\currentarrow] (ind\prex) to [out=60,in=90] (ind\x);
+    \fi
+    % draw target
+    \ifnum\x=\target
+      \fill[\targetbg] (\x,0) rectangle (\x+1,1);
+      \draw[\targetborder] (\x,0) rectangle (\x+1,1);
+      \node[text=\targettext] (val\x) at (\x+0.5,0.5) {\val};
+    \else
+      \fill[\currentbg] (\x,0) rectangle (\x+1,1);
+      \draw[\currentborder] (\x,0) rectangle (\x+1,1);
+      \node[text=\currenttext] (val\x) at (\x+0.5,0.5) {\val};
+    \fi
+  \fi
+}
+
+\end{tikzpicture}
+}
+
+\newcounter{frames}
+\setcounter{frames}{0}
+\newcommand{\animation}{
+  \begin{figure}
+  \genpic{\theframes}
+  \end{figure}
+  \ifthenelse{\equal{\theframes}{\target}}
+    {}
+    {
+      \stepcounter{frames}
+      \animation}
+}
+
+\begin{document}
+%% % Animation
+%% \animation
+
+% Infographics
+\begin{figure}
+\genpic{4}
+\vskip 0cm
+\genpic{5}
+\vskip 0cm
+\genpic{6}
+\end{figure}
+\end{document}
