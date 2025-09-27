@@ -3,3 +3,7 @@
 #+date: 2025-09-27
 
 Graphics written in TeX (and others) about computer science topics
+
+* Data Structures and Algorithms
+
+- [[Linear search][./data-structures-algorithms/linear-search.pdf]]
