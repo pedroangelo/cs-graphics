@@ -1,11 +1,8 @@
-#+title: Computer Science Graphics
+#+title: TODO
 #+author: Pedro Ângelo
 #+date: 2025-09-27
 
-* TODO:
 - In data-structures-algorithms/binary-search.tex:
   + improve placement of cells, to allow also search on the left
   + add animation, and produce steps automatically
 - Use package animate
-- Convert to PNG and add to README to show on GitHub
-  + [https://tex.stackexchange.com/questions/11866/compile-a-latex-document-into-a-png-image-thats-as-short-as-possible]
