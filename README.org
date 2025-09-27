@@ -2,9 +2,23 @@
 #+author: Pedro Ângelo
 #+date: 2025-09-27
 
-Graphics written in TeX (and others) about computer science topics
+Graphics written in TeX (and others) about computer science topics.
 
 * Data Structures and Algorithms
 
-- [[./data-structures-algorithms/linear-search.pdf][Linear search]]
-- [[./data-structures-algorithms/binary-search.pdf][Binary search]]
+Linear search:
+#+attr_html: :width 500px
+#+attr_latex: :width 500px
+[[./data-structures-algorithms/linear-search.png]]
+
+Binary search:
+#+attr_html: :width 500px
+#+attr_latex: :width 500px
+[[./data-structures-algorithms/binary-search.png]]
+
+* Uses
+
+Convert from pdf to png with
+#+BEGIN_SRC bash
+convert -density 300 <source.pdf> -background white -alpha remove -alpha off -quality 90 <target.png>
+#+END_SRC
