@@ -9,12 +9,12 @@ Graphics written in TeX (and others) about computer science topics.
 Linear search:
 #+attr_html: :width 500px
 #+attr_latex: :width 500px
-[[./data-structures-algorithms/linear-search.png]]
+[[./data structures and algorithms/linear-search.png]]
 
 Binary search:
 #+attr_html: :width 500px
 #+attr_latex: :width 500px
-[[./data-structures-algorithms/binary-search.png]]
+[[./data structures and algorithms/binary-search.png]]
 
 * Uses
 
