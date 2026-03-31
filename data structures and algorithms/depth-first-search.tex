@@ -1,0 +1,134 @@
+\documentclass[tikz, border=5mm]{standalone}
+
+% Packages
+\usepackage{ifthen}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage[sfdefault]{FiraSans}
+
+\pagenumbering{gobble}
+
+% colours
+\definecolor{white}{HTML}{FFFFFF}
+\definecolor{black}{HTML}{000000}
+\definecolor{lightgray}{HTML}{E6E6E6}
+\definecolor{gray}{HTML}{B3B3B3}
+\definecolor{darkgray}{HTML}{808080}
+\definecolor{green}{HTML}{60BA12}
+\definecolor{beige}{HTML}{F7F2C0}
+\definecolor{lightblue}{HTML}{DEF2FC}
+
+\tikzset{
+  vertex/.style={circle,draw,minimum size=1cm,font=\LARGE},
+  visited/.style={vertex,fill=red},
+  current/.style={vertex,fill=beige},
+  default/.style={vertex,fill=blue},
+  edge/.style={draw=black},
+  directed/.style={->,draw=black}
+}
+
+\newcommand{\drawGraph}[1]{
+\begin{tikzpicture}[thick]
+\def\dist{2}
+
+\node[vertex] (v1)  at (0,0)              {1};
+%% \node[vertex] (v2)  at (\dist,0)          {2};
+\node[vertex] (v2)  at (2*\dist,0)        {2};
+\node[vertex] (v3)  at (3*\dist,0)        {3};
+\node[vertex] (v4)  at (4*\dist,0)        {4};
+
+\node[vertex] (v5)  at (0,-\dist)         {5};
+\node[vertex] (v6)  at (\dist,-\dist)     {6};
+\node[vertex] (v7)  at (2*\dist,-\dist)   {7};
+\node[vertex] (v8)  at (3*\dist,-\dist)   {8};
+\node[vertex] (v9)  at (4*\dist,-\dist)   {9};
+
+%% \node[vertex] (v11) at (0,-2*\dist)       {11};
+\node[vertex] (v10) at (\dist,-2*\dist)   {10};
+\node[vertex] (v11) at (2*\dist,-2*\dist) {11};
+\node[vertex] (v12) at (3*\dist,-2*\dist) {12};
+%% \node[vertex] (v15) at (4*\dist,-2*\dist) {15};
+
+\draw[edge] (v1) -- (v2);
+\draw[edge] (v2) -- (v6);
+\draw[edge] (v2) -- (v7);
+\draw[edge] (v2) -- (v8);
+\draw[edge] (v3) -- (v8);
+\draw[edge] (v3) -- (v9);
+\draw[edge] (v5) -- (v10);
+\draw[edge] (v6) -- (v7);
+\draw[edge] (v6) -- (v11);
+\draw[edge] (v8) -- (v12);
+\draw[edge] (v9) -- (v12);
+
+\def\order{
+  1/1/0/0,
+  2/2/2*\dist/0,
+  3/6/\dist/-\dist,
+  4/7/2*\dist/-\dist,
+  5/11/2*\dist/-2*\dist,
+  6/8/3*\dist/-\dist,
+  7/3/3*\dist/0,
+  8/9/4*\dist/-\dist,
+  9/12/3*\dist/-2*\dist
+}
+
+%% \def\order{
+%%   1/1/0/0,
+%%   2/2/2*\dist/0,
+%%   3/6/\dist/-\dist,
+%%   4/8/3*\dist/-\dist,
+%%   5/7/2*\dist/-\dist,
+%%   6/11/2*\dist/-2*\dist,
+%%   7/3/3*\dist/0,
+%%   8/12/3*\dist/-2*\dist,
+%%   9/9/4*\dist/-\dist
+%% }
+
+% --- Directed edges ---
+%% \draw[directed] (B) -- (D);
+
+% --- Edge with label (weight) ---
+%% \draw[edge] (v1) -- node[above] {5} (C);
+
+\def\current{#1}
+\def\cols{5}
+
+\foreach \step/\val/\x/\y in \order {
+
+  % visited nodes
+  \ifnum\step<\current
+    %%  % compute column (0..4)
+    %% \pgfmathtruncatemacro{\col}{mod(\val-1,\cols)}
+
+    %% % compute row (0..2)
+    %% \pgfmathtruncatemacro{\row}{(\val-1)/\cols}
+
+    %% % convert to coordinates
+    %% \pgfmathsetmacro{\x}{\col*\dist}
+    %% \pgfmathsetmacro{\y}{-\row*\dist}
+    \node[visited] (v\val) at (\x,\y) {\val};
+  \fi
+}
+\end{tikzpicture}
+}
+
+\def\target{10}
+\newcounter{frames}
+\setcounter{frames}{1}
+\newcommand{\animation}{
+  \drawGraph{\theframes}
+  \ifthenelse{\equal{\theframes}{\target}}
+    {}
+    {
+      \stepcounter{frames}
+      \animation}
+}
+
+\begin{document}
+\animation
+%% \drawGraph{1}
+%% \drawGraph{2}
+%% \drawGraph{3}
+%% \drawGraph{4}
+\end{document}
