@@ -1,0 +1,22 @@
+\documentclass[a4paper]{article}
+\input{macros}
+\begin{document}
+\noindent Using newly defined environment so we can have several styles.
+\begin{itemize}
+\item Writing directly.
+\begin{pythoncode}
+print("Hello, World!")
+\end{pythoncode}
+
+\item Importing from file
+\lstinputlisting[style=pythonstyle]{hello_world.py}
+
+\item Using newtcblisting to add tag
+\begin{pythoncodetag}
+print("Hello, World!")
+\end{pythoncodetag}
+
+\item Importing from file
+\tcbinputlisting{pythonstyletag,listing file=hello_world.py}
+\end{itemize}
+\end{document}

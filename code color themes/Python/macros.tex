@@ -1,0 +1,132 @@
+\usepackage{listings}
+\usepackage{xcolor}
+
+% Define GitHub-like colors
+\definecolor{ghbg}{HTML}{f6f8fa}   % background
+\definecolor{ghframe}{HTML}{d0d7de} % border
+\definecolor{ghcomment}{HTML}{6e7781} % comment gray
+\definecolor{ghkeyword}{HTML}{cf222e} % keywords red
+\definecolor{ghstring}{HTML}{0a3069} % strings dark blue
+\definecolor{ghnumber}{HTML}{0550ae} % numbers blue
+
+%% \lstset{
+%%   backgroundcolor=\color{ghbg},
+%%   basicstyle=\ttfamily\small,
+%%   breaklines=true,
+%%   frame=single,
+%%   rulecolor=\color{ghframe},
+%%   xleftmargin=0.5em,
+%%   xrightmargin=0.5em,
+%%   framexleftmargin=0.5em,
+%%   showstringspaces=false,
+%%   tabsize=2,
+%%   numbers=none,
+%%   %% numberstyle=\tiny\color{ghcomment},
+%%   keywordstyle=\color{ghkeyword}\bfseries,
+%%   stringstyle=\color{ghstring},
+%%   commentstyle=\color{ghcomment}\itshape,
+%%   numbersep=0.6em
+%% }
+
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{listings}
+
+\lstdefinestyle{pythonstyle}{
+  language=Python,
+  backgroundcolor=\color{ghbg},
+  basicstyle=\ttfamily\small,
+  breaklines=true,
+  frame=single,
+  rulecolor=\color{ghframe},
+  xleftmargin=2mm,
+  framexleftmargin=1mm,
+  xrightmargin=2mm,
+  framexrightmargin=1mm,
+  showstringspaces=false,
+  tabsize=2,
+  numbers=none,
+  keywordstyle=\color{ghkeyword}\bfseries,
+  stringstyle=\color{ghstring},
+  commentstyle=\color{ghcomment}\itshape,
+  numbersep=0.6em,
+  columns=fullflexible,
+  keepspaces=true,
+  frameround=tttt, % Rounds all 4 corners
+}
+
+\lstdefinestyle{pythonstyletag}{
+  style=pythonstyle,
+  rulecolor=\color{ghbg},
+  xleftmargin=0pt,
+  framexleftmargin=0pt,
+  xrightmargin=0pt,
+  framexrightmargin=0pt,
+  aboveskip=1pt,
+  belowskip=0pt,
+}
+
+\tcbset{
+  pythonstyletag/.style={
+    listing only,
+    listing engine=listings,
+    listing options={
+      style=pythonstyletag
+    },
+    colback=ghbg,
+    colframe=ghframe,
+    %% colbacktitle=ghbg,
+    coltitle=ghcomment,
+    fonttitle=\scriptsize\ttfamily,
+    title={\hfill Python},
+    attach title to upper=,
+    %% halign title=right,
+    %% titlerule=0pt,
+    boxrule=0.5pt,
+    arc=2pt,
+    top=0mm,
+    left=1mm,
+    right=1mm,
+    bottom=0mm,
+    before skip=\medskipamount,
+    after skip=\medskipamount
+  }
+}
+
+\newtcblisting{pythoncodetag}{pythonstyletag}
+
+\lstnewenvironment{pythoncode}
+{\lstset{style=pythonstyle}}
+{}
+
+\newcommand{\pythoncodetagfile}[1]{%
+  \tcbinputlisting{
+    pythonstyletag,
+    listing file=#1
+  }%
+}
+
+%% \newtcblisting{pythoncodetag}[1][]{
+%%   listing only,
+%%   listing engine=listings,
+%%   listing options={
+%%     style=pythonstyletag,
+%%   },
+%%   colback=ghbg,
+%%   colframe=ghframe,
+%%   %% colbacktitle=ghbg,
+%%   coltitle=ghcomment,
+%%   fonttitle=\scriptsize\ttfamily,
+%%   title={\hfill Python},
+%%   attach title to upper=,
+%%   %% halign title=right,
+%%   %% titlerule=0pt,
+%%   boxrule=0.5pt,
+%%   arc=2pt,
+%%   top=0mm,
+%%   left=1mm,
+%%   right=1mm,
+%%   bottom=0mm,
+%%   before skip=\medskipamount,
+%%   after skip=\medskipamount,
+%%   #1
+%% }
