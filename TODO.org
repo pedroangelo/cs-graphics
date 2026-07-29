@@ -2,7 +2,9 @@
 #+author: Pedro Ângelo
 #+date: 2025-09-27
 
+- folds from functional programming
+- Add sorting algorithms, their complexity, code and visualisation
 - In data-structures-algorithms/binary-search.tex:
   + improve placement of cells, to allow also search on the left
   + add animation, and produce steps automatically
-- Use package animate
+- Use package animate?
