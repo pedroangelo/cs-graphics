@@ -2,6 +2,7 @@
 #+author: Pedro Ângelo
 #+date: 2025-09-27
 
+- check https://ctan.org/pkg/xlistings
 - folds from functional programming
 - Add sorting algorithms, their complexity, code and visualisation
 - In data-structures-algorithms/binary-search.tex:

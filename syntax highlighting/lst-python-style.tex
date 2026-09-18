@@ -1,33 +1,26 @@
 \usepackage{listings}
-\usepackage{../github-primer}
 \usepackage{xcolor}
+\usepackage{github-primer}
+\usepackage{solarized}
 
+%% Github colour theme
 \colorlet{background}{ghbg}
 \colorlet{frame}{ghframe}
 \colorlet{comment}{ghcomment}
 \colorlet{keyword}{ghkeyword}
-\colorlet{keyword}{ghkeyword}
 \colorlet{string}{ghstring}
 \colorlet{number}{ghnumber}
+\colorlet{identifier}{black}
 
-%% \lstset{
-%%   backgroundcolor=\color{background},
-%%   basicstyle=\ttfamily\small,
-%%   breaklines=true,
-%%   frame=single,
-%%   rulecolor=\color{frame},
-%%   xleftmargin=0.5em,
-%%   xrightmargin=0.5em,
-%%   framexleftmargin=0.5em,
-%%   showstringspaces=false,
-%%   tabsize=2,
-%%   numbers=none,
-%%   %% numberstyle=\tiny\color{comment},
-%%   keywordstyle=\color{keyword}\bfseries,
-%%   stringstyle=\color{string},
-%%   commentstyle=\color{comment}\itshape,
-%%   numbersep=0.6em
-%% }
+%% %% Solarized colour theme
+%% \colorlet{background}{solarized-base3}
+%% \colorlet{frame}{solarized-base03}
+%% \colorlet{comment}{solarized-base1}
+%% \colorlet{keyword}{solarized-green}
+%% \colorlet{string}{solarized-cyan}
+%% \colorlet{number}{solarized-base1}
+%% \colorlet{identifier}{solarized-base03}
+
 
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{listings}
@@ -49,6 +42,8 @@
   keywordstyle=\color{keyword}\bfseries,
   stringstyle=\color{string},
   commentstyle=\color{comment}\itshape,
+  identifierstyle=\color{identifier},
+  numberstyle=\color{number},
   numbersep=0.6em,
   columns=fullflexible,
   keepspaces=true,
@@ -136,4 +131,24 @@
 %%   before skip=\medskipamount,
 %%   after skip=\medskipamount,
 %%   #1
+%% }
+
+
+%% \lstset{
+%%   backgroundcolor=\color{background},
+%%   basicstyle=\ttfamily\small,
+%%   breaklines=true,
+%%   frame=single,
+%%   rulecolor=\color{frame},
+%%   xleftmargin=0.5em,
+%%   xrightmargin=0.5em,
+%%   framexleftmargin=0.5em,
+%%   showstringspaces=false,
+%%   tabsize=2,
+%%   numbers=none,
+%%   %% numberstyle=\tiny\color{comment},
+%%   keywordstyle=\color{keyword}\bfseries,
+%%   stringstyle=\color{string},
+%%   commentstyle=\color{comment}\itshape,
+%%   numbersep=0.6em
 %% }
