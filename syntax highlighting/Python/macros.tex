@@ -1,30 +1,31 @@
 \usepackage{listings}
+\usepackage{../github-primer}
 \usepackage{xcolor}
 
-% Define GitHub-like colors
-\definecolor{ghbg}{HTML}{f6f8fa}   % background
-\definecolor{ghframe}{HTML}{d0d7de} % border
-\definecolor{ghcomment}{HTML}{6e7781} % comment gray
-\definecolor{ghkeyword}{HTML}{cf222e} % keywords red
-\definecolor{ghstring}{HTML}{0a3069} % strings dark blue
-\definecolor{ghnumber}{HTML}{0550ae} % numbers blue
+\colorlet{background}{ghbg}
+\colorlet{frame}{ghframe}
+\colorlet{comment}{ghcomment}
+\colorlet{keyword}{ghkeyword}
+\colorlet{keyword}{ghkeyword}
+\colorlet{string}{ghstring}
+\colorlet{number}{ghnumber}
 
 %% \lstset{
-%%   backgroundcolor=\color{ghbg},
+%%   backgroundcolor=\color{background},
 %%   basicstyle=\ttfamily\small,
 %%   breaklines=true,
 %%   frame=single,
-%%   rulecolor=\color{ghframe},
+%%   rulecolor=\color{frame},
 %%   xleftmargin=0.5em,
 %%   xrightmargin=0.5em,
 %%   framexleftmargin=0.5em,
 %%   showstringspaces=false,
 %%   tabsize=2,
 %%   numbers=none,
-%%   %% numberstyle=\tiny\color{ghcomment},
-%%   keywordstyle=\color{ghkeyword}\bfseries,
-%%   stringstyle=\color{ghstring},
-%%   commentstyle=\color{ghcomment}\itshape,
+%%   %% numberstyle=\tiny\color{comment},
+%%   keywordstyle=\color{keyword}\bfseries,
+%%   stringstyle=\color{string},
+%%   commentstyle=\color{comment}\itshape,
 %%   numbersep=0.6em
 %% }
 
@@ -33,11 +34,11 @@
 
 \lstdefinestyle{pythonstyle}{
   language=Python,
-  backgroundcolor=\color{ghbg},
+  backgroundcolor=\color{background},
   basicstyle=\ttfamily\small,
   breaklines=true,
   frame=single,
-  rulecolor=\color{ghframe},
+  rulecolor=\color{frame},
   xleftmargin=2mm,
   framexleftmargin=1mm,
   xrightmargin=2mm,
@@ -45,9 +46,9 @@
   showstringspaces=false,
   tabsize=2,
   numbers=none,
-  keywordstyle=\color{ghkeyword}\bfseries,
-  stringstyle=\color{ghstring},
-  commentstyle=\color{ghcomment}\itshape,
+  keywordstyle=\color{keyword}\bfseries,
+  stringstyle=\color{string},
+  commentstyle=\color{comment}\itshape,
   numbersep=0.6em,
   columns=fullflexible,
   keepspaces=true,
@@ -58,7 +59,7 @@
 
 \lstdefinestyle{pythonstyletag}{
   style=pythonstyle,
-  rulecolor=\color{ghbg},
+  rulecolor=\color{background},
   xleftmargin=0pt,
   framexleftmargin=0pt,
   xrightmargin=0pt,
@@ -74,10 +75,10 @@
     listing options={
       style=pythonstyletag
     },
-    colback=ghbg,
-    colframe=ghframe,
-    %% colbacktitle=ghbg,
-    coltitle=ghcomment,
+    colback=background,
+    colframe=frame,
+    %% colbacktitle=background,
+    coltitle=comment,
     fonttitle=\scriptsize\ttfamily,
     title={\hfill Python},
     attach title to upper=,
@@ -117,10 +118,10 @@
 %%   listing options={
 %%     style=pythonstyletag,
 %%   },
-%%   colback=ghbg,
-%%   colframe=ghframe,
-%%   %% colbacktitle=ghbg,
-%%   coltitle=ghcomment,
+%%   colback=background,
+%%   colframe=frame,
+%%   %% colbacktitle=background,
+%%   coltitle=comment,
 %%   fonttitle=\scriptsize\ttfamily,
 %%   title={\hfill Python},
 %%   attach title to upper=,
