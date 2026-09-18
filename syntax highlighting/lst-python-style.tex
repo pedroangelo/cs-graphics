@@ -4,6 +4,7 @@
 \usepackage{solarized}
 
 %% Github colour theme
+\colorlet{base}{black}
 \colorlet{background}{ghbg}
 \colorlet{frame}{ghframe}
 \colorlet{comment}{ghcomment}
@@ -13,6 +14,7 @@
 \colorlet{identifier}{black}
 
 %% %% Solarized colour theme
+%% \colorlet{base}{solarized-base03}
 %% \colorlet{background}{solarized-base3}
 %% \colorlet{frame}{solarized-base03}
 %% \colorlet{comment}{solarized-base1}
@@ -21,14 +23,13 @@
 %% \colorlet{number}{solarized-base1}
 %% \colorlet{identifier}{solarized-base03}
 
-
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{listings}
 
 \lstdefinestyle{pythonstyle}{
   language=Python,
   backgroundcolor=\color{background},
-  basicstyle=\ttfamily\small,
+  basicstyle=\ttfamily\small\color{base},
   breaklines=true,
   frame=single,
   rulecolor=\color{frame},
@@ -101,54 +102,5 @@
 }
 
 \newcommand{\pythoncodetagfile}[1]{%
-  \tcbinputlisting{
-    pythonstyletag,
-    listing file=#1
-  }%
+  \tcbinputlisting{pythonstyletag,listing file=#1}%
 }
-
-%% \newtcblisting{pythoncodetag}[1][]{
-%%   listing only,
-%%   listing engine=listings,
-%%   listing options={
-%%     style=pythonstyletag,
-%%   },
-%%   colback=background,
-%%   colframe=frame,
-%%   %% colbacktitle=background,
-%%   coltitle=comment,
-%%   fonttitle=\scriptsize\ttfamily,
-%%   title={\hfill Python},
-%%   attach title to upper=,
-%%   %% halign title=right,
-%%   %% titlerule=0pt,
-%%   boxrule=0.5pt,
-%%   arc=2pt,
-%%   top=0mm,
-%%   left=1mm,
-%%   right=1mm,
-%%   bottom=0mm,
-%%   before skip=\medskipamount,
-%%   after skip=\medskipamount,
-%%   #1
-%% }
-
-
-%% \lstset{
-%%   backgroundcolor=\color{background},
-%%   basicstyle=\ttfamily\small,
-%%   breaklines=true,
-%%   frame=single,
-%%   rulecolor=\color{frame},
-%%   xleftmargin=0.5em,
-%%   xrightmargin=0.5em,
-%%   framexleftmargin=0.5em,
-%%   showstringspaces=false,
-%%   tabsize=2,
-%%   numbers=none,
-%%   %% numberstyle=\tiny\color{comment},
-%%   keywordstyle=\color{keyword}\bfseries,
-%%   stringstyle=\color{string},
-%%   commentstyle=\color{comment}\itshape,
-%%   numbersep=0.6em
-%% }

@@ -1,12 +1,19 @@
 \documentclass[a4paper]{article}
 \input{lst-python-style}
+\input{lst-haskell-style}
 
 \title{Experimentation with lstlisting styles}
 \author{Pedro Ângelo}
 \begin{document}
 \maketitle
 
-\noindent Using newly defined environment so we can have several styles.
+\section{Introduction}
+Our goal with this document is to produce beautiful code highlighting styles.
+We experiment with different lstlisting styles as well as packages and techniques, such as tcolourbox.
+For each language, we define several environments that allow writing code directly or importing from files.
+
+\section{Python}
+
 \begin{itemize}
 \item Writing directly.
 \begin{pythoncode}
@@ -17,12 +24,12 @@ print("Hello, world!")
 %% \lstinputlisting[style=pythonstyle]{get_valid_input.py}
 \pythoncodefile{get_valid_input.py}
 
-\item Using newtcblisting to add tag
+\item Writing directly (using newtcblisting to add tag)
 \begin{pythoncodetag}
 print("Hello, world!")
 \end{pythoncodetag}
 
-\item Importing from file
+\item Importing from file (using newtcblisting to add tag)
 %% \tcbinputlisting{pythonstyletag,listing file=get_valid_input.py}
 \pythoncodetagfile{get_valid_input.py}
 \end{itemize}
